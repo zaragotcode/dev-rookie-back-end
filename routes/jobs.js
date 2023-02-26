@@ -6,10 +6,11 @@ const { decodeUserFromToken, checkAuth } = middleware
 
 /*---------- Public Routes ----------*/
 
+router.get('/', jobsCtrl.index)
+router.get('/:id', jobsCtrl.show)
 
 /*---------- Protected Routes ----------*/
 router.use(decodeUserFromToken)
-router.get('/', checkAuth, jobsCtrl.index)
 router.put('/create', checkAuth, jobsCtrl.create)
 router.put('/:id', checkAuth, jobsCtrl.update)
 router.delete('/:id', checkAuth, jobsCtrl.deleteJob)

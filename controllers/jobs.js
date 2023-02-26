@@ -58,9 +58,24 @@ const deleteJob = async(req, res) => {
   }
 }
 
+const show = async(req, res) => {
+  try {
+    const job = await Job.findOne( {
+      where: {
+        id: req.params.id,
+      }
+  })
+    res.status(200).json(job)
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ err: error })
+  }
+}
+
 module.exports = {
   index,
   create,
   update,
-  deleteJob
+  deleteJob,
+  show
 }
