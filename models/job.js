@@ -33,7 +33,7 @@ module.exports = (sequelize, DataTypes) => {
         key: 'id'
       }
     },
-    jobId: {
+    jobPosterId: {
       type: DataTypes.INTEGER,
       allowNull: false,
       onDelete: 'CASCADE',

@@ -5,12 +5,15 @@ const middleware = require('../middleware/auth.js')
 const { decodeUserFromToken, checkAuth } = middleware
 
 /*---------- Public Routes ----------*/
-router.put('/', jobsCtrl.index)
 
 
 /*---------- Protected Routes ----------*/
 router.use(decodeUserFromToken)
-router.put('/', checkAuth, jobsCtrl.createJob)
+router.get('/', checkAuth, jobsCtrl.index)
+router.put('/create', checkAuth, jobsCtrl.createJob)
+router.put('/:id', checkAuth, jobsCtrl.updateJob)
+
+
 
 
 module.exports = router
