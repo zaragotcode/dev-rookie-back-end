@@ -10,7 +10,7 @@ const index = async (req, res) => {
   }
 }
 
-const createJob = async(req, res) => {
+const create = async(req, res) => {
   try {
     req.body.profileId = req.user.profile.id
     req.body.jobId = req.user.profile.id
@@ -22,7 +22,7 @@ const createJob = async(req, res) => {
   }
 }
 
-const updateJob = async(req, res) => {
+const update = async(req, res) => {
   try {
     const job = await Job.findOne( {
       where: {
@@ -36,7 +36,21 @@ const updateJob = async(req, res) => {
       }
     }
     await job.save()
-    console.log('job', job);
+    res.status(200).json(job)
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ err: error })
+  }
+}
+
+const deleteJob = async(req, res) => {
+  try {
+    const job = await Job.destroy( {
+      where: {
+        id: req.params.id,
+        profileId: req.user.profile.id
+      }
+  })
     res.status(200).json(job)
   } catch (error) {
     console.log(error);
@@ -46,6 +60,7 @@ const updateJob = async(req, res) => {
 
 module.exports = {
   index,
-  createJob,
-  updateJob
+  create,
+  update,
+  deleteJob
 }

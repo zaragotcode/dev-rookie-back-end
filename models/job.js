@@ -20,10 +20,17 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Job.init({
-    companyName: DataTypes.STRING,
+    companyName: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
     logo: DataTypes.STRING,
-    position: DataTypes.STRING,
+    position:  {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
     applyLink: DataTypes.STRING,
+    salary: DataTypes.INTEGER,
     profileId: {
       type: DataTypes.INTEGER,
       allowNull: false,

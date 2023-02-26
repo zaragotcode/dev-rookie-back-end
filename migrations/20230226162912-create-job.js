@@ -10,16 +10,21 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       companyName: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false
       },
       logo: {
         type: Sequelize.STRING
       },
       position: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false,
       },
       applyLink: {
         type: Sequelize.STRING
+      },
+      salary: {
+        type: Sequelize.INTEGER
       },
       profileId: {
         type: Sequelize.INTEGER,
