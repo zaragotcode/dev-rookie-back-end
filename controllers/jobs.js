@@ -1,4 +1,4 @@
-const { Job, Profile } = require('../models')
+const { Job } = require('../models')
 
 const index = async (req, res) => {
   try {
